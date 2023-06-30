@@ -25,7 +25,7 @@ let ball = sprites.create(img`
 
 Put in code to ``||sprites:set ball velocity||`` to ``||sprites:vx||`` of ``100`` and ``||sprites:vy||`` of ``100``. Also,  ``||sprites:set ball bounce on wall||``.
 
-```blocks
+```spy
 let ball = sprites.create(img`
     . . 6 6 6 6 . .
     . 6 d 4 4 4 b .
@@ -42,7 +42,7 @@ ball.setBounceOnWall(true)
 
 Use some more code to set the ``||sprites:y||`` of ``||variables(noclick):ball||`` with ``||math:pick random||`` to get a some value between ``0`` and ``120``.
 
-```blocks
+```spy
 let ball = sprites.create(img`
     . . 6 6 6 6 . .
     . 6 d 4 4 4 b .
@@ -61,7 +61,7 @@ ball.y = randint(0, 120)
 Create a ``||functions:function||`` called ``create_ball`` and move the code you added in the previous
 steps from ``||loops:on start||`` into this function. Now, ``||functions:call create_ball||`` in ``||loops:on start||``.
 
-```blocks
+```spy
 function create_ball () {
     ball = sprites.create(img`
         . . 6 6 6 6 . .
@@ -83,7 +83,7 @@ create_ball()
 
 Let's work on the left paddle. Add a new ``||variables(sprites):set mySprite to sprite||`` to ``||loops:on start||`` and rename the variable to ``||variables(noclick):left_paddle||``. Change the kind to ``||sprites:LeftPaddles||``.
 
-```blocks
+```spy
 namespace SpriteKind {
     export const LeftPaddles = SpriteKind.create()
 }
@@ -113,7 +113,7 @@ Make the ``||variables(noclick):left_paddle||`` move up and down using
 ``||controller:move left_paddle with buttons||``. Use the velocity of `0` for ``||controller:vx||`` and `150`
 for ``||controller:vy||``.
 
-```blocks
+```spy
 namespace SpriteKind {
     export const LeftPaddles = SpriteKind.create()
 }
@@ -143,7 +143,7 @@ controller.moveSprite(left_paddle, 0, 150)
 Add code to ``||sprites:set left_paddle left||`` to a position of ``0``.
 Also, you want to ``||sprites:set left_paddle stay in screen||`` to keep the paddle from disappearing.
 
-```blocks
+```spy
 namespace SpriteKind {
     export const LeftPaddles = SpriteKind.create()
 }
@@ -174,7 +174,7 @@ left_paddle.setStayInScreen(true)
 
 Create a ``||functions:function||`` called ``create_left_paddle`` and move the code you added to the ``||loops:on start||`` into this function. Now, add a ``||functions:call create_left_paddle||`` in ``||loops:on start||``.
 
-```blocks
+```spy
 namespace SpriteKind {
     export const LeftPaddles = SpriteKind.create()
 }
@@ -213,7 +213,7 @@ function. Change all of the ``||variables(noclick):left_paddle||`` variables in 
 ``||variables(noclick):right_paddle||``. Now, add a ``||functions:call create_right_paddle||`` in ``||loops:on start||``.
 
 
-```blocks
+```spy
 namespace SpriteKind {
     export const LeftPaddles = SpriteKind.create()
 }
@@ -251,7 +251,7 @@ Let's make some more changes inside of ``create_right_paddle``. Set the kind of 
 ``||controller:move||`` ``||variables(noclick):right_paddle||`` code with a multiplayer ``||controller:player 2 move||`` for
 ``||variables(noclick):right_paddle||``. Use the same values for ``||controller:vx||`` and ``||controller:vy||``
 
-```blocks
+```spy
 namespace SpriteKind {
     export const RightPaddles = SpriteKind.create()
 }
@@ -286,7 +286,7 @@ create_right_paddle()
 
 Make sure that you call 3 functions, ``||functions:call create_ball||``, ``||functions:call create_left_paddle||``, and ``||functions:call create_right_paddle||`` in the ``||loops:on start||``.
 
-```blocks
+```spy
 namespace SpriteKind {
     export const LeftPaddles = SpriteKind.create()
     export const RightPaddles = SpriteKind.create()
@@ -362,7 +362,7 @@ create_right_paddle()
 
 Add an event that runs code for when ``||variables(noclick):ball||`` overlaps with ``||variables:left_paddle||``. This happens for the case when ``||sprites:on||`` ``||variables(noclick):sprite||`` ``||sprites:of kind Player overlaps||`` ``||variables(noclick):otherSprite||`` ``||sprites:of kind LeftPaddles||``.
 
-```blocks
+```spy
 namespace SpriteKind {
     export const LeftPaddles = SpriteKind.create()
 }
@@ -374,7 +374,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.LeftPaddles, function (sprite, o
 
 Inside the event, set the inverse of the horizontal speed for ``||variables(noclick):sprite||`` to simulate the bounce on the paddle. This happens if you ``||sprites:set sprite vx (velocity x) to||`` the negative value of the horizontal speed, which is ``||variables(noclick):sprite||`` ``||sprites:vx (velocity x)||`` multiplied by ``-1``. Also, ``||info:change score by ||`` ``1`` for the player using the ``||variables(noclick):left_paddle||``.
 
-```blocks
+```spy
 namespace SpriteKind {
     export const LeftPaddles = SpriteKind.create()
 }
@@ -388,7 +388,7 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.LeftPaddles, function (sprite, o
 
 Copy the event and all its code from the previous the step. In this event, change the ``||variables(noclick):otherSprite||`` kind from ``||sprites:LeftPaddles||`` to ``||sprites:RightPaddles||``. Replace the ``||info:change score by||`` with the multiplayer ``||info:change player 2 score by||`` for the player using the ``||variables(noclick):right_paddle||``. Keep the same score increment of ``1``.
 
-```blocks
+```spy
 namespace SpriteKind {
     export const RightPaddles = SpriteKind.create()
 }
