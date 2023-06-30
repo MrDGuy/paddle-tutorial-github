@@ -4,7 +4,7 @@
 
 **Paddle** is a 2 player variation of the famous pong game!
 
-![A ball bouncing on paddles](/img/paddle.gif)
+![A ball bouncing on paddles](https://github.com/MrDGuy/paddle-tutorial-github/blob/master/img/paddle.gif)
 
 ## {Step 1}
 
